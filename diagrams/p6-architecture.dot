@@ -1,0 +1,53 @@
+
+digraph P6_Architecture {
+  rankdir=LR;
+
+  subgraph cluster_clients {
+    label="Clients";
+    style=dashed;
+    WebUI [label="P6 Web UI"];
+    Desktop [label="P6 Professional / Desktop"];
+    TeamMember [label="Team Member / Timesheets"];
+  }
+
+  subgraph cluster_app {
+    label="Middle Tier (J2EE App Server)";
+    style=filled;
+    color=lightgrey;
+    AppServer [label="P6 EPPM App Server"];
+    JobService [label="Job Service / Summarizer / Leveler"];
+    WebServices [label="Web Services / API"];
+  }
+
+  subgraph cluster_data {
+    label="Data Tier";
+    style=filled;
+    color=lightyellow;
+    P6DB [label="P6 Operational DB"];
+    RepDB [label="Reporting DB / STAR"];
+  }
+
+  subgraph cluster_fort {
+    label="Fort / Beast Layer";
+    style=dotted;
+    GraphStore [label="Graph Store (P6 Ontology Projection)"];
+    Agents [label="Agents / SCIG Calculators"];
+  }
+
+  WebUI -> AppServer;
+  Desktop -> AppServer;
+  TeamMember -> AppServer;
+
+  AppServer -> P6DB;
+  JobService -> P6DB;
+  P6DB -> RepDB;
+
+  WebServices -> AppServer;
+  AppServer -> WebServices;
+
+  P6DB -> GraphStore;
+  RepDB -> GraphStore;
+
+  GraphStore -> Agents;
+  Agents -> WebServices [label="advice / automation"];
+}

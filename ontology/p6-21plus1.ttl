@@ -1,0 +1,229 @@
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix p6:   <https://nkllon.org/p6#> .
+@prefix dim:  <https://nkllon.org/dimension#> .
+@prefix fort: <https://nkllon.org/fort#> .
+
+### External vocabularies
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix org:  <http://www.w3.org/ns/org#> .
+
+p6:PrimaveraP6Ontology a owl:Ontology ;
+    rdfs:label "Primavera / Oracle P6 21+1 Dimensional Probe" ;
+    rdfs:comment "Fort-style ontology sketch binding Primavera P6 concepts to a provisional 21+1 SCIG dimension set." ;
+    fort:version "0.2.0" ;
+    owl:versionInfo "0.2.0" ;
+    owl:versionIRI <https://nkllon.org/p6/0.2.0> ;
+    dcterms:license <https://opensource.org/licenses/MIT> ;
+    dcterms:creator "Lou Springer" ;
+    fort:created "2025-12-10T21:05:35.584042Z"^^xsd:dateTime ;
+    fort:status "probe" ;
+    owl:imports <http://xmlns.com/foaf/0.1/> ,
+                <http://www.w3.org/ns/prov-o#> ,
+                <http://www.w3.org/ns/org#> .
+
+### Core Classes
+
+p6:P6Platform a owl:Class ;
+    rdfs:label "Primavera P6 Platform" ;
+    rdfs:comment "Oracle Primavera P6 / P6 EPPM as an enterprise project & portfolio management platform." .
+
+p6:Project a owl:Class ;
+    rdfs:label "P6 Project" ;
+    rdfs:subClassOf fort:ProjectArtifact .
+
+p6:Portfolio a owl:Class ;
+    rdfs:label "P6 Portfolio" ;
+    rdfs:subClassOf fort:PortfolioArtifact .
+
+p6:Program a owl:Class ;
+    rdfs:label "P6 Program" ;
+    rdfs:subClassOf fort:ProgramArtifact .
+
+p6:Activity a owl:Class ;
+    rdfs:label "P6 Activity" ;
+    rdfs:subClassOf fort:WorkItem .
+
+p6:WBS a owl:Class ;
+    rdfs:label "Work Breakdown Structure" ;
+    rdfs:subClassOf fort:StructureArtifact .
+
+p6:Resource a owl:Class ;
+    rdfs:label "P6 Resource" ;
+    rdfs:subClassOf fort:Resource .
+
+p6:Risk a owl:Class ;
+    rdfs:label "P6 Risk" ;
+    rdfs:subClassOf fort:RiskItem .
+
+p6:Calendar a owl:Class ;
+    rdfs:label "P6 Calendar" ;
+    rdfs:subClassOf fort:CalendarArtifact .
+
+p6:CostAccount a owl:Class ;
+    rdfs:label "P6 Cost Account" ;
+    rdfs:subClassOf fort:CostStructure .
+
+p6:Baseline a owl:Class ;
+    rdfs:label "P6 Baseline" ;
+    rdfs:subClassOf fort:Baseline .
+
+p6:JobService a owl:Class ;
+    rdfs:label "P6 Job Service" ;
+    rdfs:subClassOf fort:BackgroundProcess .
+
+p6:ScheduleModel a owl:Class ;
+    rdfs:label "P6 Schedule Model" ;
+    rdfs:subClassOf fort:ModelArtifact .
+
+p6:ReportingDatabase a owl:Class ;
+    rdfs:label "P6 Reporting Database" ;
+    rdfs:subClassOf fort:DataStore .
+
+### Dimension Classes (provisional 21+1)
+
+dim:Dimension a owl:Class ;
+    rdfs:label "Fort Dimension" ;
+    rdfs:comment "Abstract dimension for systemic stress / SCIG analysis." .
+
+dim:MetaDimension a owl:Class ;
+    rdfs:subClassOf dim:Dimension ;
+    rdfs:label "Meta-Dimension" .
+
+# D1–D21
+
+dim:D1_TimeSchedule a dim:Dimension ;
+    rdfs:label "Time / Schedule Integrity" .
+
+dim:D2_Cost a dim:Dimension ;
+    rdfs:label "Cost / Financial Integrity" .
+
+dim:D3_ScopeWBS a dim:Dimension ;
+    rdfs:label "Scope / WBS Coherence" .
+
+dim:D4_ResourceCapacity a dim:Dimension ;
+    rdfs:label "Resource & Capacity Alignment" .
+
+dim:D5_Risk a dim:Dimension ;
+    rdfs:label "Risk & Uncertainty Management" .
+
+dim:D6_DataIntegration a dim:Dimension ;
+    rdfs:label "Data Model & Integration Surfaces" .
+
+dim:D7_ConfigChange a dim:Dimension ;
+    rdfs:label "Configuration & Change Management" .
+
+dim:D8_GovernancePortfolio a dim:Dimension ;
+    rdfs:label "Governance & Portfolio Alignment" .
+
+dim:D9_Security a dim:Dimension ;
+    rdfs:label "Security & Access Control" .
+
+dim:D10_Compliance a dim:Dimension ;
+    rdfs:label "Compliance & Auditability" .
+
+dim:D11_Performance a dim:Dimension ;
+    rdfs:label "Performance & Scalability" .
+
+dim:D12_Resilience a dim:Dimension ;
+    rdfs:label "Resilience & Continuity" .
+
+dim:D13_UXHumanFactors a dim:Dimension ;
+    rdfs:label "UX / Human Factors" .
+
+dim:D14_Automation a dim:Dimension ;
+    rdfs:label "Automation & Orchestration Surfaces" .
+
+dim:D15_AnalyticsFeedback a dim:Dimension ;
+    rdfs:label "Analytics, Reporting & Feedback Loops" .
+
+dim:D16_MultiProjectCoupling a dim:Dimension ;
+    rdfs:label "Multi-Project / Program Coupling" .
+
+dim:D17_VendorLockIn a dim:Dimension ;
+    rdfs:label "Vendor / Ecosystem Lock-in Pressure" .
+
+dim:D18_ImplementationComplexity a dim:Dimension ;
+    rdfs:label "Implementation & Rollout Complexity" .
+
+dim:D19_Operability a dim:Dimension ;
+    rdfs:label "Operability / Admin Ergonomics" .
+
+dim:D20_Extensibility a dim:Dimension ;
+    rdfs:label "Extensibility & Customization" .
+
+dim:D21_AgentReadiness a dim:Dimension ;
+    rdfs:label "Multi-Agent / LLM-Readiness" .
+
+# D+1
+
+dim:DPlus1_SCIG a dim:MetaDimension ;
+    rdfs:label "Systemic Continuous Invalid-state Gap (SCIG / Goblin)" ;
+    rdfs:comment "Meta-dimension capturing how easily the socio-technical system drifts into undetected invalid states." .
+
+### Properties
+
+p6:stressesDimension a owl:ObjectProperty ;
+    rdfs:label "stresses dimension" ;
+    rdfs:domain p6:P6Platform ;
+    rdfs:range dim:Dimension .
+
+p6:guardsDimension a owl:ObjectProperty ;
+    rdfs:label "guards dimension" ;
+    rdfs:domain p6:P6Platform ;
+    rdfs:range dim:Dimension .
+
+p6:exposesSurfaceOnDimension a owl:ObjectProperty ;
+    rdfs:label "exposes surface on dimension" ;
+    rdfs:domain p6:P6Platform ;
+    rdfs:range dim:Dimension .
+
+p6:hasDimensionScore a owl:DatatypeProperty ;
+    rdfs:label "has dimension score" ;
+    rdfs:comment "Links an artifact to a reified dimension score node." ;
+    a owl:ObjectProperty ;
+    rdfs:range p6:DimensionScore .
+
+p6:implementsArtifact a owl:ObjectProperty ;
+    rdfs:label "implements artifact" ;
+    rdfs:domain p6:Project ;
+    rdfs:range fort:Artifact .
+
+### Reified Dimension Scoring
+
+p6:DimensionScore a owl:Class ;
+    rdfs:label "Dimension Score" ;
+    rdfs:comment "Reified score linking an artifact and a dimension with a bounded numeric value." .
+
+p6:scoreForArtifact a owl:ObjectProperty ;
+    rdfs:label "score for artifact" ;
+    rdfs:comment "Artifact that this score evaluates." ;
+    rdfs:domain p6:DimensionScore ;
+    rdfs:range fort:Artifact .
+
+p6:scoreForDimension a owl:ObjectProperty ;
+    rdfs:label "score for dimension" ;
+    rdfs:comment "Dimension that this score pertains to." ;
+    rdfs:domain p6:DimensionScore ;
+    rdfs:range dim:Dimension .
+
+p6:scoreValue a owl:DatatypeProperty ;
+    rdfs:label "score value" ;
+    rdfs:comment "Numeric score bounded to [0,1] by SHACL." ;
+    rdfs:domain p6:DimensionScore ;
+    rdfs:range xsd:decimal .
+
+### Example Individuals
+
+p6:PrimaveraP6 a p6:P6Platform ;
+    rdfs:label "Oracle Primavera P6" ;
+    p6:stressesDimension dim:D1_TimeSchedule , dim:D4_ResourceCapacity , dim:D16_MultiProjectCoupling ;
+    p6:guardsDimension dim:D1_TimeSchedule , dim:D4_ResourceCapacity , dim:D15_AnalyticsFeedback ;
+    p6:exposesSurfaceOnDimension dim:D6_DataIntegration , dim:D14_Automation , dim:D21_AgentReadiness ;
+    rdfs:comment "Enterprise project & portfolio management platform regarded as a powerful but unforgiving bow-tie constraint in Fort." .
+

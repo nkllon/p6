@@ -1,0 +1,31 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix dim:  <https://nkllon.org/dimension#> .
+@prefix canon: <https://nkllon.org/vocab/21plus1#> .
+
+# Provisional → Canonical 21+1 dimension mapping (placeholder IRIs for canonical)
+
+dim:D1_TimeSchedule rdfs:seeAlso canon:D1_TimeSchedule .
+dim:D2_Cost rdfs:seeAlso canon:D2_Cost .
+dim:D3_ScopeWBS rdfs:seeAlso canon:D3_ScopeWBS .
+dim:D4_ResourceCapacity rdfs:seeAlso canon:D4_ResourceCapacity .
+dim:D5_Risk rdfs:seeAlso canon:D5_Risk .
+dim:D6_DataIntegration rdfs:seeAlso canon:D6_DataIntegration .
+dim:D7_ConfigChange rdfs:seeAlso canon:D7_ConfigChange .
+dim:D8_GovernancePortfolio rdfs:seeAlso canon:D8_GovernancePortfolio .
+dim:D9_Security rdfs:seeAlso canon:D9_Security .
+dim:D10_Compliance rdfs:seeAlso canon:D10_Compliance .
+dim:D11_Performance rdfs:seeAlso canon:D11_Performance .
+dim:D12_Resilience rdfs:seeAlso canon:D12_Resilience .
+dim:D13_UXHumanFactors rdfs:seeAlso canon:D13_UXHumanFactors .
+dim:D14_Automation rdfs:seeAlso canon:D14_Automation .
+dim:D15_AnalyticsFeedback rdfs:seeAlso canon:D15_AnalyticsFeedback .
+dim:D16_MultiProjectCoupling rdfs:seeAlso canon:D16_MultiProjectCoupling .
+dim:D17_VendorLockIn rdfs:seeAlso canon:D17_VendorLockIn .
+dim:D18_ImplementationComplexity rdfs:seeAlso canon:D18_ImplementationComplexity .
+dim:D19_Operability rdfs:seeAlso canon:D19_Operability .
+dim:D20_Extensibility rdfs:seeAlso canon:D20_Extensibility .
+dim:D21_AgentReadiness rdfs:seeAlso canon:D21_AgentReadiness .
+dim:DPlus1_SCIG rdfs:seeAlso canon:DPlus1_SCIG .
+
+

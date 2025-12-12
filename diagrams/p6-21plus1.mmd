@@ -1,0 +1,76 @@
+
+```mermaid
+graph LR
+    subgraph P6["P6 Concern Clusters"]
+      SCHED["Scheduling & CPM"]
+      RES["Resources & Capacity"]
+      COST["Cost & EV"]
+      RISK["Risk & Issues"]
+      PORT["Programs & Portfolios"]
+      INTEG["Integration & Data"]
+      UX["Planner / Team UX"]
+      OPS["Ops & Admin"]
+      EXT["Extensibility / Agents"]
+    end
+
+    subgraph DIM["21+1 Dimensions (Provisional)"]
+      D1["D1 Time / Schedule"]
+      D2["D2 Cost"]
+      D3["D3 Scope / WBS"]
+      D4["D4 Resource Capacity"]
+      D5["D5 Risk"]
+      D6["D6 Data & Integration"]
+      D7["D7 Config / Change"]
+      D8["D8 Governance / Portfolio"]
+      D9["D9 Security"]
+      D10["D10 Compliance"]
+      D11["D11 Performance"]
+      D12["D12 Resilience"]
+      D13["D13 UX / Human"]
+      D14["D14 Automation"]
+      D15["D15 Analytics / Feedback"]
+      D16["D16 Multi-Project Coupling"]
+      D17["D17 Vendor Lock-in"]
+      D18["D18 Implementation Complexity"]
+      D19["D19 Operability"]
+      D20["D20 Extensibility"]
+      D21["D21 Agent Readiness"]
+      Dp["D+1 SCIG / Goblin"]
+    end
+
+    SCHED --- D1
+    SCHED --- D3
+    SCHED --- D5
+    SCHED --- D16
+
+    RES --- D4
+    RES --- D1
+    RES --- D11
+
+    COST --- D2
+    COST --- D10
+    COST --- D15
+
+    RISK --- D5
+    RISK --- Dp
+
+    PORT --- D8
+    PORT --- D16
+    PORT --- D17
+
+    INTEG --- D6
+    INTEG --- D14
+    INTEG --- D21
+
+    UX --- D13
+    UX --- D19
+
+    OPS --- D7
+    OPS --- D9
+    OPS --- D11
+    OPS --- D12
+
+    EXT --- D20
+    EXT --- D21
+    EXT --- Dp
+```

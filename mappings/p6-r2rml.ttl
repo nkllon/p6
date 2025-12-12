@@ -1,0 +1,99 @@
+@prefix rr:    <http://www.w3.org/ns/r2rml#> .
+@prefix rml:   <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:    <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix p6:    <https://nkllon.org/p6#> .
+
+# Starter R2RML sketch (placeholders, to be adapted to actual P6 schema)
+
+<#ProjectTriplesMap>
+  a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "PROJECT" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "https://example.org/p6/project/{PROJ_ID}" ;
+    rr:class p6:Project
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "PROJ_SHORT_NAME" ]
+  ] .
+
+<#ActivityTriplesMap>
+  a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "ACTIVITY" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "https://example.org/p6/activity/{ACT_ID}" ;
+    rr:class p6:Activity
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "ACT_NAME" ]
+  ] .
+
+<#WBSTriplesMap>
+  a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "WBS" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "https://example.org/p6/wbs/{WBS_ID}" ;
+    rr:class p6:WBS
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "WBS_NAME" ]
+  ] .
+
+<#ResourceTriplesMap>
+  a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "RESOURCE" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "https://example.org/p6/resource/{RES_ID}" ;
+    rr:class p6:Resource
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "RES_NAME" ]
+  ] .
+
+<#CalendarTriplesMap>
+  a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "CALENDAR" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "https://example.org/p6/calendar/{CAL_ID}" ;
+    rr:class p6:Calendar
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "CAL_NAME" ]
+  ] .
+
+<#BaselineTriplesMap>
+  a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "BASELINE" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "https://example.org/p6/baseline/{BL_ID}" ;
+    rr:class p6:Baseline
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "BL_NAME" ]
+  ] .
+
+

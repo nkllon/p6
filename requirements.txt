@@ -1,0 +1,6 @@
+rdflib>=6.3.2,<7
+pyshacl>=0.23.0,<1
+jsonschema>=4.22.0,<5
+
+
+

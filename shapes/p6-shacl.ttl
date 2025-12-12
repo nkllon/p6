@@ -1,0 +1,78 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix p6:  <https://nkllon.org/p6#> .
+@prefix dim: <https://nkllon.org/dimension#> .
+
+# Reified DimensionScore node constraints
+p6:DimensionScoreShape a sh:NodeShape ;
+  sh:targetClass p6:DimensionScore ;
+  sh:property [
+    sh:path p6:scoreForArtifact ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:message "DimensionScore must reference exactly one artifact IRI via p6:scoreForArtifact." ;
+    sh:severity sh:Violation ;
+  ] ;
+  sh:property [
+    sh:path p6:scoreForDimension ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:class dim:Dimension ;
+    sh:nodeKind sh:IRI ;
+    sh:message "DimensionScore must reference exactly one dim:Dimension via p6:scoreForDimension." ;
+    sh:severity sh:Violation ;
+  ] ;
+  sh:property [
+    sh:path p6:scoreValue ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:decimal ;
+    sh:minInclusive 0.0 ;
+    sh:maxInclusive 1.0 ;
+    sh:message "p6:scoreValue must be a decimal within [0,1]." ;
+    sh:severity sh:Violation ;
+  ] .
+
+# P6 Platform linkage properties must point to dimensions
+p6:P6PlatformShape a sh:NodeShape ;
+  sh:targetClass p6:P6Platform ;
+  sh:property [
+    sh:path p6:stressesDimension ;
+    sh:class dim:Dimension ;
+    sh:severity sh:Violation ;
+  ] ;
+  sh:property [
+    sh:path p6:guardsDimension ;
+    sh:class dim:Dimension ;
+    sh:severity sh:Violation ;
+  ] ;
+  sh:property [
+    sh:path p6:exposesSurfaceOnDimension ;
+    sh:class dim:Dimension ;
+    sh:severity sh:Violation ;
+  ] .
+
+# Projects implementing artifacts (recommended)
+p6:ProjectImplementsArtifactShape a sh:NodeShape ;
+  sh:targetClass p6:Project ;
+  sh:property [
+    sh:path p6:implementsArtifact ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+    sh:message "Projects should link at least one artifact via p6:implementsArtifact." ;
+    sh:severity sh:Warning ;
+  ] .
+
+# Core artifacts should have human-friendly labels (recommended)
+p6:LabeledArtifactShape a sh:NodeShape ;
+  sh:targetClass p6:Project , p6:Activity , p6:Resource , p6:ScheduleModel ;
+  sh:property [
+    sh:path rdfs:label ;
+    sh:minCount 1 ;
+    sh:severity sh:Warning ;
+  ] .
+
+

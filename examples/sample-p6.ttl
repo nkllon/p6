@@ -1,0 +1,57 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix p6:   <https://nkllon.org/p6#> .
+@prefix dim:  <https://nkllon.org/dimension#> .
+
+p6:DemoProgram a p6:Program ;
+  rdfs:label "Demo Capital Program" .
+
+p6:ProjectAlpha a p6:Project ;
+  rdfs:label "Project Alpha" ;
+  p6:implementsArtifact p6:ScheduleAlpha .
+
+p6:ProjectBeta a p6:Project ;
+  rdfs:label "Project Beta" ;
+  p6:implementsArtifact p6:ScheduleBeta .
+
+p6:ScheduleAlpha a p6:ScheduleModel ;
+  rdfs:label "Alpha Schedule Model" ;
+  p6:hasDimensionScore [
+    a p6:DimensionScore ;
+    p6:scoreForArtifact p6:ScheduleAlpha ;
+    p6:scoreForDimension dim:D1_TimeSchedule ;
+    p6:scoreValue "0.82"^^xsd:decimal
+  ] ;
+  p6:hasDimensionScore [
+    a p6:DimensionScore ;
+    p6:scoreForArtifact p6:ScheduleAlpha ;
+    p6:scoreForDimension dim:D5_Risk ;
+    p6:scoreValue "0.40"^^xsd:decimal
+  ] .
+
+p6:ScheduleBeta a p6:ScheduleModel ;
+  rdfs:label "Beta Schedule Model" ;
+  p6:hasDimensionScore [
+    a p6:DimensionScore ;
+    p6:scoreForArtifact p6:ScheduleBeta ;
+    p6:scoreForDimension dim:D1_TimeSchedule ;
+    p6:scoreValue "0.65"^^xsd:decimal
+  ] .
+
+p6:A1 a p6:Activity ;
+  rdfs:label "Alpha - Design" .
+
+p6:A2 a p6:Activity ;
+  rdfs:label "Alpha - Build" .
+
+p6:R1 a p6:Resource ;
+  rdfs:label "Planner" .
+
+# Platform surface and dimension links
+p6:PrimaveraP6 a p6:P6Platform ;
+  p6:stressesDimension dim:D1_TimeSchedule , dim:D4_ResourceCapacity ;
+  p6:guardsDimension dim:D1_TimeSchedule ;
+  p6:exposesSurfaceOnDimension dim:D21_AgentReadiness .
+
+

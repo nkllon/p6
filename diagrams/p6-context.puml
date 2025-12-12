@@ -1,0 +1,34 @@
+
+@startuml p6-context
+
+title Primavera / Oracle P6 in a Fort Bow-Tie
+
+!define RECTANGLE class
+
+RECTANGLE "External Drivers\n(Requirements, Contracts,\nRegulation, Strategy)" as Drivers
+RECTANGLE "Upstream Systems\nERP, HR, CMMS, BIM, Docs" as Upstream
+RECTANGLE "Execution World\nSites, Teams, Vendors" as Execution
+
+rectangle "Primavera P6 Platform" as P6 {
+  RECTANGLE "P6 Web / Desktop UI" as UI
+  RECTANGLE "P6 App Server\n(J2EE, Job Service)" as App
+  RECTANGLE "P6 DB\n(Operational Schema)" as DB
+  RECTANGLE "Reporting DB / Analytics" as RDB
+}
+
+RECTANGLE "Fort / Beast Layer\n(Ontology, Agents, SCIG)" as Fort
+
+Drivers --> UI : constraints, milestones, budgets
+Upstream --> App : integrations, master data
+UI --> App : user actions
+App --> DB : read/write
+DB --> RDB : ETL / replication
+App --> Execution : work orders, look-aheads
+Execution --> UI : status, progress, issues
+
+Fort --> DB : graph projection, validation
+Fort --> RDB : analytics, goblin scores
+Fort --> UI : advisory, explanations
+Fort --> App : automation, orchestration hooks
+
+@enduml

@@ -1,0 +1,11 @@
+SourceTable,SourceColumn,TargetClass/Property,Notes
+PROJECT,PROJ_ID,p6:Project,Primary key → instance IRI
+PROJECT,PROJ_SHORT_NAME,rdfs:label,Human-readable label
+WBS,WBS_ID,p6:WBS,Primary key → instance IRI
+ACTIVITY,ACT_ID,p6:Activity,Primary key → instance IRI
+ACTIVITY,PROJ_ID,p6:Project,Foreign key → membership
+RESOURCE,RES_ID,p6:Resource,Primary key → instance IRI
+CALENDAR,CAL_ID,p6:Calendar,Primary key → instance IRI
+COST_ACCOUNT,CA_ID,p6:CostAccount,Primary key → instance IRI
+
+

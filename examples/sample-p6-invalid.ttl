@@ -1,0 +1,30 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix p6:   <https://nkllon.org/p6#> .
+@prefix dim:  <https://nkllon.org/dimension#> .
+
+# Invalid dataset to exercise SHACL failures
+
+p6:ProjectGamma a p6:Project ;
+  rdfs:label "Project Gamma" ;
+  p6:implementsArtifact p6:ScheduleGamma .
+
+p6:ScheduleGamma a p6:ScheduleModel ;
+  rdfs:label "Gamma Schedule Model" ;
+  # Violation 1: scoreValue out of range (>1.0)
+  p6:hasDimensionScore [
+    a p6:DimensionScore ;
+    p6:scoreForArtifact p6:ScheduleGamma ;
+    p6:scoreForDimension dim:D1_TimeSchedule ;
+    p6:scoreValue "1.20"^^xsd:decimal
+  ] ;
+  # Violation 2: missing scoreForDimension
+  p6:hasDimensionScore [
+    a p6:DimensionScore ;
+    p6:scoreForArtifact p6:ScheduleGamma ;
+    p6:scoreValue "0.50"^^xsd:decimal
+  ] .
+
+
+
